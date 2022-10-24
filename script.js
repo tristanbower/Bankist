@@ -79,6 +79,20 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(" ")
+      .map((name) => name[0])
+      .join("");
+  });
+};
+
+createUsernames(accounts);
+
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -171,4 +185,65 @@ console.log(letters.join(""));
 // console.log(currenciesUnique);
 // currenciesUnique.forEach(function (value, _, map) {
 //   console.log(`${value}: ${value}`);
-// });
+//});
+
+//-------------------CHALLENGE NUMBER 2-------------------------
+/*
+let julia_data = [3, 5, 2, 12, 7];
+
+let kate_data = [4, 1, 15, 8, 3];
+
+const julia_correct = julia_data.slice(1, 3);
+
+console.log(julia_correct);
+
+let data = julia_correct.concat(kate_data);
+
+data.forEach(function (mov, i, arr) {
+  if (mov > 3) {
+    console.log(`Dog number ${i+1} is an adult, and is ${mov} years old`);
+  } else {
+    console.log(`Dog number ${i+1} is stille a puppy`);
+  }
+});
+*/
+
+// DATA TRANSORMATIONS WITH MAP,FILTER AND REDUCE
+
+// MAP matches a 1 to 1 array containing the results of an operation on the original Array
+
+// FILTER, filters an array to meet the conditions specified into a new array
+
+// REDUCE reduces all array elements down into a single array element. Single value gets returned
+
+/*
+//Currency Converstion////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+const movementsUSD = movements.map(function (mov) {
+  return mov * eurToUsd;
+});
+//OR
+//const movementsUSD = movements.map((mov) => mov * eurToUsd);
+
+console.log(movementsUSD);
+
+// Brute force way of coding it
+/*
+const monvementsUSDfor = [];
+for (const mov of movements) {
+  monvementsUSDfor.push(mov * eurToUsd);
+}
+console.log(monvementsUSDfor);
+
+const MovmentsDescription = movements.map(
+  (mov, i) =>
+  `Movement ${i + 1}: You ${mov > 0 ? `deposited` : `withdrew`} ${Math.abs(
+    mov
+    )}`
+    );
+    
+    console.log(MovmentsDescription);
+    
+*/
